@@ -1,0 +1,5 @@
+{
+    "dbt.enableNewLineagePanel": true,
+    "dbt.dbtPythonPathOverride": "",
+    "dbt.lineage.defaultExpansion": 30
+}
