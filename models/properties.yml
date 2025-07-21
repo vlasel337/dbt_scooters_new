@@ -39,6 +39,19 @@ models:
     config:
       materialized: "incremental"
 
+  - name: "revenue_daily"
+    description: "Daily revenue aggregate"
+    config:
+      materialized: "incremental"
+      full_refresh: false
+      strategy: "merge"
+      unique_key: [date]
+      on_schema_change: "append_new_columns"
+      
+
+
+      
+
       
 
     
