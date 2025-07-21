@@ -12,7 +12,7 @@ sources:
         description: "Users of scooter service"
 
       - name: "events"
-        description: "Events in scooter service"
+        description: "Raw user events with duplicates"
 
 models:
   - name: "trips_prep"
@@ -34,6 +34,12 @@ models:
     description: "Rides enriched with users personal data"
     config:
       materialized: "incremental"
+  - name: "events_clean"
+    description: "Dedublicated events table"
+    config:
+      materialized: "incremental"
+
+      
 
     
 
