@@ -17,9 +17,14 @@ sources:
 
 seeds:
   - name: "scooters"
-    description: "File with scooters models"
+    description: "Dictionary with scooters models"
     config:
       delimeter: ","
+  - name: "event_types"
+    description: "Dictionary with mobile app event types"
+    config:
+      delimeter: ","
+      
 
 models:
   - name: "trips_prep"
@@ -61,7 +66,17 @@ models:
   - name: "companies"
     description: "Models quantity by companies"
   - name: "companies_trips"
-    description: "Number of trips by companies"  
+    description: "Number of trips by companies"
+  - name: "events_full"
+    description: "View with dedublicated events enriched with meaningful types" 
+    config:
+      materialized: "view"
+  - name: "events_stat"
+    description: "Percent of cancelled orders" 
+
+      
+
+    
 
 
     
