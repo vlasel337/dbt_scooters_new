@@ -24,6 +24,8 @@ seeds:
     description: "Dictionary with mobile app event types"
     config:
       delimeter: ","
+  - name: "age_groups"
+    description: "Age groups to split users for analysis"
       
 
 models:
@@ -73,6 +75,8 @@ models:
       materialized: "view"
   - name: "events_stat"
     description: "Percent of cancelled orders" 
+  - name: "trips_age_group"
+    description: "Overall trips statistics by user age group"
 
       
 
