@@ -14,6 +14,13 @@ sources:
       - name: "events"
         description: "Raw user events with duplicates"
 
+
+seeds:
+  - name: "scooters"
+    description: "File with scooters models"
+    config:
+      delimeter: ","
+
 models:
   - name: "trips_prep"
     description: "Tuned trips view"
@@ -51,6 +58,15 @@ models:
     description: "Number of simultaneous rides in time"
     config:
       materialized: "incremental"
+  - name: "companies"
+    description: "Models quantity by companies"
+  - name: "companies_trips"
+    description: "Number of trips by companies"  
+
+
+    
+
+      
 
   
       
