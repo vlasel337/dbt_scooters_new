@@ -3,6 +3,12 @@ version: 2
 macros:
   - name: "updated_at"
     description: "Columns which represents timestamp of the last update"
+  - name: "date_in_moscow"
+    description: "Сonvert timestamptz to date in Europe/Moscow timezone (UTC+3)"
+    arguments:
+      - name: "ts_col"
+        type: "string"
+        description: "Timestamp column in timestampz format"
 
 sources:
   - name: "scooters_raw" 
