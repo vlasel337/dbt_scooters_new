@@ -62,6 +62,8 @@ models:
     description: "Dedublicated events table"
     config:
       materialized: "incremental"
+      strategie: "merge"
+      unique_key: ["user_id","timestamp","type_id"]
 
   - name: "revenue_daily"
     description: "Daily revenue aggregate"

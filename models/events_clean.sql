@@ -1,13 +1,18 @@
+{% set date = var('dt', none) %}
+
 select distinct
     user_id,
     "timestamp",
     type_id,
     {{ updated_at() }}
 from {{ source("scooters_raw", "events") }}
+where
 {% if is_incremental() %}
-    where 1=1
-    and "timestamp" > (select max("timestamp") from {{ this }})
-    and "timestamp" <= (select date(max("timestamp")) + interval '2' month from {{ this }}) -- Ограничиваем срез двумя месяцами
+    {% if date %}
+        date("timestamp") = date '{{ date }}'
+    {% else %}
+        "timestamp" > (select max("timestamp") from {{ this }})
+    {% endif %}
 {% else %}
-    where "timestamp" < '2023-08-01'
+    "timestamp" < timestamp '2023-08-01'
 {% endif %}
