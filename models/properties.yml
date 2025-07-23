@@ -58,6 +58,11 @@ models:
     description: "Rides enriched with users personal data"
     config:
       materialized: "incremental"
+      post-hook:
+        - "analyze dbt.trips_users"
+        - sql: "vacuum dbt.trips_users"
+          transaction: false
+
   - name: "events_clean"
     description: "Dedublicated events table"
     config:
