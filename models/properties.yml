@@ -9,7 +9,15 @@ macros:
       - name: "ts_col"
         type: "string"
         description: "Timestamp column in timestampz format"
+  - name: "create_role"
+    description: "Create role for users as dbt operation"
+    arguments:
+      - name: "name"
+        type: "string"
+        description: "Role name"
 
+
+      
 sources:
   - name: "scooters_raw" 
     description: "Raw data provided by scooters service (the name of the scheme)"
@@ -70,14 +78,7 @@ models:
       strategie: "merge"
       unique_key: ["user_id","timestamp","type_id"]
 
-  - name: "revenue_daily"
-    description: "Daily revenue aggregate"
-    config:
-      materialized: "incremental"
-      full_refresh: false
-      strategy: "merge"
-      unique_key: [date]
-      on_schema_change: "append_new_columns"
+
   - name: "trips_concurrency"
     description: "Number of simultaneous rides in time"
     config:
@@ -94,6 +95,10 @@ models:
     description: "Percent of cancelled orders" 
   - name: "trips_age_group"
     description: "Overall trips statistics by user age group"
+  - name: "trips_by_user"
+    description: "Trips can be updated by special user"
+    config:
+      materialized: "incremental"
 
       
 
