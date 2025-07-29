@@ -78,6 +78,10 @@ models:
         - columns: ["date"]
   - name: "trips_age_daily"
     description: "Daily trips statistics by user age"
+    data_tests:
+      - unique:
+          column_name: "date::text || age::text"
+
   - name: "trips_age_daily_stat"
     description: "Aggregation of daily trips statistics by user age"
   - name: "trips_users"
@@ -105,6 +109,10 @@ models:
     description: "Models quantity by companies"
   - name: "companies_trips"
     description: "Number of trips by companies"
+    columns:
+      - name: "company"
+        data_tests:
+          - unique
   - name: "events_full"
     description: "View with dedublicated events enriched with meaningful types" 
     config:
