@@ -1,0 +1,23 @@
+version: 2
+
+seeds:
+  - name: "scooters"
+    description: "Dictionary with scooters models"
+    config:
+      delimeter: ","
+  - name: "event_types"
+    description: "Dictionary with mobile app event types"
+    config:
+      delimeter: ","
+  - name: "age_groups"
+    description: "Age groups to split users for analysis"
+    columns:
+      - name: "group"
+        description: "Age group name for report"
+        data_tests: [ "unique_not_null" ]
+      - name: "age_start"
+        description: "Start age of group"
+        data_tests: [ "unique_not_null" ]
+      - name: "age_end"
+        description: "End age of group"
+        data_tests: [ "unique_not_null" ]

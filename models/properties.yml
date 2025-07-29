@@ -57,19 +57,6 @@ sources:
 
       - name: "events"
         description: "Raw user events with duplicates"
-
-
-seeds:
-  - name: "scooters"
-    description: "Dictionary with scooters models"
-    config:
-      delimeter: ","
-  - name: "event_types"
-    description: "Dictionary with mobile app event types"
-    config:
-      delimeter: ","
-  - name: "age_groups"
-    description: "Age groups to split users for analysis"
       
 
 models:
@@ -89,6 +76,8 @@ models:
     data_tests:
       - unique:
           column_name: "date::text || age::text"
+      - unique_key: 
+          columns: ["date", "age"]
 
   - name: "trips_age_daily_stat"
     description: "Aggregation of daily trips statistics by user age"
