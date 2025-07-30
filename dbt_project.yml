@@ -21,5 +21,14 @@ models:
   dbt_scooters_new:
     +materialized: table
     +on_schema_change: append_new_columns
+    +persist_docs:
+      relation: true
+      columns: true
     finance:
       +schema: "finance"
+    
+seeds:
+  dbt_scooters_new:
+    +persist_docs:
+      relation: true
+      columns: true

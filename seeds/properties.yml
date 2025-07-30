@@ -2,11 +2,15 @@ version: 2
 
 seeds:
   - name: "scooters"
-    description: "Dictionary with scooters models"
+    description: >
+      Scooter models information and park statistics by model.
+      Includes information about the manufacturing company.
+      Data received from the service team and uploaded by Mark.
+      Data is current as of summer 2023.
     config:
       delimeter: ","
   - name: "event_types"
-    description: "Dictionary with mobile app event types"
+    description: "{{ doc('event_types') }}"
     config:
       delimeter: ","
   - name: "age_groups"
