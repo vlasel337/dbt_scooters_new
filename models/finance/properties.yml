@@ -9,3 +9,38 @@ models:
       strategy: "merge"
       unique_key: [date]
       on_schema_change: "append_new_columns"
+      contract:
+        enforced: true
+    columns:
+      - name: "revenue_rub"
+        description: "Daily revenue in rubles"
+        data_type: "decimal(20, 2)"
+      - name: "date"
+        description: "Unique day"
+        data_type: "date"
+      - name: "updated_at"
+        description: "When row was updated last time"
+        data_type: "timestamptz"
+  - name: "events_prep"
+    description: "User events prepared for following processing"
+    config:
+      materialized: "view"
+    columns:
+      - name: "date"
+        description: >
+          Date of event derived from timestamp.
+          Imitates Hive-styled partitioning of events by date.
+          It is needed for efficient incremental processing by engines
+          with partitioning support (i.e. Trino).
+
+exposures:
+  - name: "financial_dashboard"
+    label: "Financial Dashboard"
+    type: "dashboard"
+    maturity: "high"
+    description: "Main financial dashboard on company with code financial metrics"
+    depends_on:
+      - "ref('revenue_daily')"
+    owner:
+      name: "Finance department"
+    

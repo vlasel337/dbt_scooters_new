@@ -26,7 +26,7 @@ models:
       columns: true
     finance:
       +schema: "finance"
-    
+    c
 seeds:
   dbt_scooters_new:
     +persist_docs:
